@@ -2,6 +2,13 @@
     padding: 0px;
     margin: 0px;
 }
+li{
+    float: left;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
 .head{
     min-width: 1000px;
     width: 100%;
@@ -10,29 +17,22 @@
 }
 .head-left{
     padding-left:24px;
-    /* text-align: center; */
-}
-li{
     float: left;
-    list-style: none;
-    font-size: 13px;
-    
 }
-a{
-    text-decoration: none;
-}
+
 .head a{
-  font-family:  "PingFang SC", Arial, "Microsoft YaHei", sans-serif;
-  margin-right: 31px;
-  color:#222;
-  line-height: 60px;
+    font-size: 13px;
+    font-family:  "PingFang SC", Arial, "Microsoft YaHei", sans-serif;
+    margin-right: 31px;
+    color:#222;
+    line-height: 60px;
 }
 a.fight{
     color: #f63051;
 }
 .login{
     font-family: inherit;
-    /* font-weight: 400; */
+    font-weight: 400;
     text-align: center;
     vertical-align: middle;
     border: 0;
@@ -58,8 +58,6 @@ a:hover{
     height: calc(100vh - 100px);
 }
 .top{
-    min-height: 185px;
-    max-height: 310px;
     width: 654px;
     height: 100%;
     margin:0 auto;
@@ -118,8 +116,7 @@ a:hover{
 .footer li {
     line-height: 40px;
     font-size: 12px;
-    color: #9195a3; 
-    margin-right:22px;
+    margin-right:20px;
 }
 .f-left {
     color: #9195a3; 
@@ -128,7 +125,7 @@ a:hover{
     color: #222;
 }
 .foot-left{
-    padding-left: 32px;
+    padding-left: 30px;
     margin-right:20px; 
     color: #9195a3; 
     float: left;
@@ -136,8 +133,10 @@ a:hover{
 .foot-right {
     float: right;
     color: #bbb;
-    right: 0;
 }
 .f-right{
     color: #bbb; 
+}
+.foot-right>li:last-child{
+    margin-right: 22px;
 }
