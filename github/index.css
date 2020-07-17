@@ -14,6 +14,7 @@ body{
 }
  a{
     text-decoration: none;
+    cursor: pointer;
 }
 a:hover{
     text-decoration: none;
@@ -23,8 +24,9 @@ svg{
     vertical-align: middle;
     fill:white;
 }
-svg:hover{
+svg:hover {
     fill:hsla(0,0%,100%,.7);
+    
 }
 
 /* A.整个头部栏 */
@@ -76,27 +78,34 @@ svg:hover{
     width: 300px;
     height: 28px;
     margin:12px 16px 12px 0 ;
-    border-radius: 6px;
-    background-color: hsla(0, 0%, 100%, .7);
+    /* border-radius: 6px;
+    background-color: hsla(0, 0%, 100%, .7); */
     font-weight: 400;
     float: left;
+    position: relative;
+    
 }
 .search-bar-input{
-     width: 249px;
+    box-sizing: border-box;
+     width: 300px;
      height: 28px;
      padding:0 12px;
      border:0px ;
-     background-color: hsla(0,0%,100%,.125);
+     background-color: #3f4448;
      float: left;
-     color: #ffffff;
      font-size: 14px;
+     position: absolute;
+     border-radius: 6px;
 }
 .search-bar-img{
     width: 19px;
     height: 28px;
     margin-right: 8px;
-    float: left;
-    background-color: hsla(0,0%,100%,.125)
+    /* float: left; */
+    background-color: #3f4448;
+    position: absolute;
+    right:0px;
+    
 }
 /* A2.2 链接栏 */
 .header-link-nav{
@@ -109,6 +118,9 @@ svg:hover{
     margin-right: 16px;
     font-weight: 600;
     white-space: nowrap;
+}
+.header-nav-a:hover{
+    color: hsla(0,0%,100%,.7);
 }
 /* A3.图标栏 */
 .header-right{
@@ -290,12 +302,20 @@ svg:hover{
 .message a:hover{
     color:#0366d6;
     text-decoration: underline;
+    /* cursor: pointer; */
 }
 .message-bottom-a{
     display: inline-block;
     margin: 8px 0;
-    color: #586069!
-    /* padding-bottom: 2px; */
+    color: #586069;
+    line-height: 32px;
+    cursor: pointer;
+}
+.message-bottom-a:hover .octicon-rss{
+    color:#0366d6;
+    text-decoration: underline;
+    fill:#0366d6;
+    /* cursor: pointer; */
 }
 
 /* 中间区域的底部 */
@@ -531,4 +551,7 @@ svg:hover{
 }
 .container-right a:hover{
     color:#0366d6;
+}
+.container-right-box>div:last-child{
+    border-bottom:none ;
 }
