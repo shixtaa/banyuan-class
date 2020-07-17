@@ -1,0 +1,534 @@
+/* 全局 */
+*{
+    padding: 0px;
+    margin: 0px;
+    vertical-align: middle;
+}
+body{
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    vertical-align: middle;
+    min-width: 1012px;
+}
+ a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: hsla(0,0%,100%,.7);
+}
+svg{
+    vertical-align: middle;
+    fill:white;
+}
+svg:hover{
+    fill:hsla(0,0%,100%,.7);
+}
+
+/* A.整个头部栏 */
+.header{
+    min-width: 1000px;
+    height: 53px;
+    background-color: #24292e;
+    padding:0 16px;
+    /* margin:0 16px; */
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 14px;
+    line-height: 1.5;
+    align-items: center;   
+    /* position: relative;
+    z-index: 10; */
+}
+.header a{
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    vertical-align: middle;
+    text-decoration: none;
+}
+/* A1.github图标 */
+.header-icon{
+    width: 32px;
+    height: 53px;
+    /* background-color: #e1f2fb; */
+    margin-right: 16px;
+    float: left;
+    align-self: stretch;
+}
+
+
+/* A2.搜索栏以及链接栏 */
+.header-nav{
+    /* width: 87%; */
+    /* width: 830px; */
+    height: 53px;
+    /* background-color: #f1f9f9; */
+    margin-right: 120px;
+    margin-left: 32px;
+    /* float: left; */
+}
+/* A2.1 搜索框 包含左边的input和查询的小图标  */
+.search-bar{
+    width: 300px;
+    height: 28px;
+    margin:12px 16px 12px 0 ;
+    border-radius: 6px;
+    background-color: hsla(0, 0%, 100%, .7);
+    font-weight: 400;
+    float: left;
+}
+.search-bar-input{
+     width: 249px;
+     height: 28px;
+     padding:0 12px;
+     border:0px ;
+     background-color: hsla(0,0%,100%,.125);
+     float: left;
+     color: #ffffff;
+     font-size: 14px;
+}
+.search-bar-img{
+    width: 19px;
+    height: 28px;
+    margin-right: 8px;
+    float: left;
+    background-color: hsla(0,0%,100%,.125)
+}
+/* A2.2 链接栏 */
+.header-link-nav{
+    height: 53px;
+    float: left;
+    line-height: 53px;
+}
+.header-nav-a{
+    padding: 16px 0;
+    margin-right: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+/* A3.图标栏 */
+.header-right{
+    float: right;
+    width: 120px;
+}
+.header-right div :hover{
+    color: hsla(0,0%,100%,.7);
+    cursor: pointer;
+}
+/* A3.1 铃铛 */
+.header-bell{
+    width: 16px;
+    height: 53px;
+    /* background-color: #f3dfe3; */
+    margin-right: 16px;
+    float: left;
+}
+.header-bell-svg{
+    margin-bottom: 4px;
+}
+/* A3.2 + */
+.header-plus{
+    width: 28px;
+    height: 53px;
+    margin-right: 16px;
+    float: left;
+}
+.header-plus-svg{
+    margin-top: 19px;
+}
+/* A3.3 头像 */
+.header-pic{
+    width: 31px;
+    height: 53px;
+    /* background-color: #e9b2bc; */
+    /* margin-right: 16px; */
+    float: left;
+}
+.header-pic-img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    float: left;
+    margin-right: 3px;
+}
+/* 向下的小三角 */
+.fa-caret-down{
+    vertical-align: middle;
+    color: #fff;
+    margin-top: 19px;
+}
+
+
+
+/* -----body 左右定宽中间自适应---- */
+.container{
+    width: 100%;
+    height:100vh;
+    background-color: #f6f8fa;
+    float: left;   
+    min-width: 1000px;
+    
+}
+/* 中间主体 */
+.container-middle{    
+    /* min-width: 544px;  */
+    height:100vh;
+    background-color: #f6f8fa;
+    margin: 0px 300px 0 296px;
+}
+.container-middle-top{
+    height: calc(100% - 174px);
+}
+.container-main{
+    box-sizing: border-box;
+    padding: 0 16px;
+    height: 100vh;
+    /* background-color: pink; */
+    /* min-width: 512px; */
+    /* width: 80%; */
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+}
+/* 推送 */
+.push{
+    box-sizing: border-box;
+    /* width: auto; */
+    height: 180px;
+    padding: 16px 0;
+    /* background-color: yellow; */
+    border-bottom:  1px solid rgb(225, 228, 232);
+}
+/* 发布人头像 */
+.push-img{
+    display: block;
+    height: 128px;
+    width: 32px;
+    margin-right: 16px;
+    float: left;
+}
+/* 发布内容 包括上边介绍、时间、消息框 */
+.push-content{
+    /* height: 128px; */
+    width: calc(100% - 48px);
+    display: block;
+    float: left;
+}
+/* 人物介绍 */
+.pusher{
+    display: inline-block;
+    font-size: 14px;
+    font-weight:600 ;
+    color:rgb(36, 41, 46);
+    vertical-align: bottom;
+}
+.pusher:hover{
+    color:#0366d6;
+}
+/* 时间 */
+.time{
+    display: inline-block;
+}
+/* 消息盒子 */
+.push-content-box{
+    box-sizing: border-box;
+    height: 76px;
+    padding: 16px;
+    margin-top: 8px;
+    background-color: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+}
+.push-content-box a:hover{
+    color:#0366d6;
+    text-decoration: underline;
+}
+.master{
+    display: inline-block;
+    padding: 2px 6px;
+    font: 12px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: #0366d6;
+    background-color: #eaf5ff;
+    border-radius: 6px;
+    vertical-align: bottom;
+}
+.name{
+    font: 12px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: #0366d6;
+    vertical-align: bottom;
+    margin-right: 4px;
+}
+.name-right{
+    font-size: 13px;
+    color: #586069;
+    /* line-height: 1.25; */
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+}
+.message{
+    font-size: 12px;
+    height: 52px;
+    margin-top: 24px;
+    /* background-color: yellow; */
+    color: #586069;
+    /* vertical-align: middle; */
+}
+.message svg{
+    fill:#586069;
+}
+.message-top-a{
+    display: inline-block;
+    color: #0366d6;
+    padding-bottom: 2px;
+}
+.message a:hover{
+    color:#0366d6;
+    text-decoration: underline;
+}
+.message-bottom-a{
+    display: inline-block;
+    margin: 8px 0;
+    color: #586069!
+    /* padding-bottom: 2px; */
+}
+
+/* 中间区域的底部 */
+.middle-footer{
+    min-width: 400px;
+    height: 110px;
+    width: auto;
+    margin: 32px 0 ;
+    /* background-color: yellow; */
+}
+.footer-left{
+    width: 150px;
+    height: 100%;
+    /* background-color: pink; */
+    /* margin-right: 30px; */
+    float: left;
+    font-size: 12px;
+}
+.footer-right{
+    /* width: 60%; */
+    height: 110px;
+    float:left;
+    /* width: calc(100% - 130px); */
+    /* margin-left: 100px; */
+}
+
+.footer-right-li{
+    list-style: none;
+    font-size: 12px;
+    color: #586069;
+    margin-bottom: 4px;
+}
+.footer-right-ul{
+    padding-left: 24px;
+    float: left;
+    /* width: 80px; */
+}
+.middle-footer a{
+    color: #586069;
+}
+.middle-footer svg{
+        fill:#c7cbd1;
+}
+/* 左边内容：主要呈现 个人的仓库 固定 */
+.container-left{
+    padding: 0 24px;
+    box-sizing: border-box;
+    width: 296px;
+    height:100vh;
+    float: left;
+    margin-left: -100%;
+    border-right: 1px solid rgb(225, 228, 232);
+    border-bottom: 1px solid rgb(225, 228, 232);
+}
+
+/* 上边的个人仓库  */
+.container-left-top{
+    box-sizing: border-box;
+    float: left;
+    width: 236.66px;
+    height: 142px;
+    margin:32px 0 16px 0;
+   
+}
+/* repositories */
+.repositories{
+    font-size: 14px;
+    margin-bottom: 4px;
+    line-height: 28px;
+}
+.repositories-btn{
+    float: right;
+    width: 69px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    background-color: rgb(46, 164, 79);
+    border:1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+}
+.repositories-btn:hover{
+    background-color: rgb(44, 151, 75);
+}
+.repositories-a{
+    display: inline-block;
+    padding-top: 0px;
+    margin-top: 11px;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.container-left-top-input{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 12px ;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #24292e;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+}
+.repo-ul{
+    color:rgb(36, 41, 46);
+    line-height: 21px;
+    padding-top: 10px;
+}
+.repo-li{
+    list-style: none;
+}
+.repo-li-a{
+    color:rgb(3, 102, 214);
+    margin-bottom:8px ;
+    font-size: 14px;
+    font-weight: 600;
+    /* margin-top:16px ; */
+}
+.repo-li-a:hover{
+    color:#0366d6;
+    text-decoration: underline;
+}
+.repo-li-a>svg{
+    fill: rgb(106, 115, 125);
+}
+.container-left-bottom{
+    box-sizing: border-box;
+    float: left;
+    width: 248px;
+    height: 164px;
+    margin-bottom: 16px ;
+    border-top: 1px solid rgb(225, 228, 232);
+}
+
+
+.team-h2{
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 16px;
+    margin-bottom: 4px;
+    display: block;
+    width: 248px;
+    height: 38px;
+    box-sizing: border-box;
+}
+.team-p{
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    margin-bottom: 10px;
+}
+
+.team-btn-a{
+    margin-top: 9px;
+    color: rgb(3, 102, 214);
+    font-weight: 500;
+    font-size: 12px;
+}
+.team-btn{
+    width: 157px;
+    height: 28px;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: #fafbfc;
+    border-color: rgba(27,31,35,.15);
+    color: rgb(3, 102, 214);
+    padding: 3px 12px;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 6px;
+}
+/* .team-btn *:hover{
+    color: #fff;
+    background-color: #0366d6;
+    border-color: rgba(27,31,35,.15);
+} */
+.team-btn:hover{
+    color: #fff;
+    background-color: #0366d6;
+    border-color: rgba(27,31,35,.15);
+}
+
+/* 右侧仓库推荐 */
+.container-right{
+    width: 300px;
+    height:100vh;
+    background-color: #f6f8fa;
+    float: left;
+    margin-left: -300px; 
+    /* position: relative;
+    left: 262.5px; */
+}
+.container-right-box{
+    box-sizing: border-box;
+    width: auto;
+    height: calc(100% - 32px);
+    margin-top: 32px;
+    padding-right: 16px;
+    /* background-color: pink;     */
+}
+.container-right-box-h2{
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+.right-box-top{
+    margin:8px 0;
+    padding:8px 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(225, 228, 232);
+}
+
+.right-box-top-a{
+    font-size: 12px;
+    font-weight: 600;
+}
+.right-box-top-p{
+    margin-bottom: 8px;
+    color: #586068;
+}
+.right-box-top span{
+    color: #586068;
+}
+.explore-more{
+    color: #5d656d;
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+.container-right a:hover{
+    color:#0366d6;
+}

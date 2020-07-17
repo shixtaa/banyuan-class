@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="header-icon">
+            <a href="#" class="header-link">
+                <svg class="header-link-svg" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true" >
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        
+        <!-- 右边的图标栏，包括铃铛、+、头像 -->
+        <div class="header-right">
+            <!-- 铃铛 -->
+            <div class="header-bell">
+                <a href="#" class="header-bell-a">
+                    <svg class="header-bell-svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path><path fill-rule="evenodd" d="M8 1.5A3.5 3.5 0 004.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01l.001.006c0 .002.002.004.004.006a.017.017 0 00.006.004l.007.001h10.964l.007-.001a.016.016 0 00.006-.004.016.016 0 00.004-.006l.001-.007a.017.017 0 00-.003-.01l-1.703-2.554a1.75 1.75 0 01-.294-.97V5A3.5 3.5 0 008 1.5zM3 5a5 5 0 0110 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.518 1.518 0 0113.482 13H2.518a1.518 1.518 0 01-1.263-2.36l1.703-2.554A.25.25 0 003 7.947V5z"></path></svg>
+                </a>
+            </div>
+            <!-- + -->
+            <div class="header-plus">
+                <svg class="header-plus-svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z"></path></svg>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+            <!-- 头像 -->
+            <div class="header-pic" >
+                <img class="header-pic-img" src="panda.jpg" alt="头像" >
+                <i class="fa fa-caret-down" aria-hidden="true" style="margin-top: 20px;"></i>
+            </div>
+        </div>
+
+        <div class="header-nav">
+            <!-- 搜索框 包含左边的input和查询的小图标 -->
+           <div class="search-bar">
+           <!-- 搜索栏 -->
+               <input type="text" class="search-bar-input" placeholder="Search or jump to..." >
+           <!-- 图标 -->
+               <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="搜索图标" class="search-bar-img">
+           </div>
+
+           <!-- 链接栏 -->
+           <div class="header-link-nav">
+               <a href="#" class="header-nav-a">Pull requests</a>
+               <a href="#" class="header-nav-a">Issues</a>
+               <a href="#" class="header-nav-a">Marketplace</a>
+               <a href="#" class="header-nav-a">Explore</a>
+           </div>
+       </div>
+        
+    </header>
+    <!-- 中间body 左右定宽中间自适应-->
+        <!-- 中间内容区 -->
+        <div class="container">
+            <div class="container-middle">
+                <div class="container-main">
+                <!-- 推送 -->
+                <div class="container-middle-top">
+                <div class="push">
+                    <!-- 发布人头像 -->
+                    <span class="push-img">
+                        <img src="panda.jpg" alt="头像" style="width: 32px;height: 32px;border-radius: 16px;">
+                    </span>
+                    <!-- 发布内容 -->
+                    <div class="push-content">
+                        <!-- 介绍 -->
+                        <a href="#" class="pusher">manikandanraji</a>
+                        pushed to 
+                        <a href="#" class="pusher">
+                            manikandanraji/youtubeclone-frontend
+                        </a>
+                        <!-- 时间 -->
+                        <span class="time">7 hours ago</span>
+                        <!-- 消息盒子 -->
+                        <div class="push-content-box">
+                            <span class="master-left">1 commit to</span>
+                            <a href="#" class="master">master</a>
+                            <br>
+                            <a href="#" class="name">shixtaa</a>
+                            <span class="name-right">removed downtime</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="push">
+                    <!-- 发布人头像 -->
+                    <span class="push-img">
+                        <img src="panda.jpg" alt="头像" style="width: 32px;height: 32px;border-radius: 16px;">
+                    </span>
+                    <!-- 发布内容 -->
+                    <div class="push-content">
+                        <!-- 介绍 -->
+                        <a href="#" class="pusher">manikandanraji</a>
+                        pushed to 
+                        <a href="#" class="pusher">
+                            manikandanraji/youtubeclone-frontend
+                        </a>
+                        <!-- 时间 -->
+                        <span class="time">7 hours ago</span>
+                        <!-- 消息盒子 -->
+                        <div class="push-content-box">
+                            <span class="master-left">1 commit to</span>
+                            <a href="#" class="master">master</a>
+                            <br>
+                            <a href="#" class="name">shixtaa</a>
+                            <span class="name-right">removed downtime</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <svg class="octicon octicon-light-bulb text-gray" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 01-1.484.211c-.04-.282-.163-.547-.37-.847a8.695 8.695 0 00-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.75.75 0 01-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75zM6 15.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75zM5.75 12a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5z"></path></svg>
+                    <strong>ProTip!</strong> The feed shows you events from people you 
+                    <a href="#" class="message-top-a">follow</a> 
+                    and repositories you 
+                    <a href="#" class="message-top-a">watch</a>.                    
+                    <br>
+                    <a class="message-bottom-a">
+                        <svg class="octicon octicon-rss mr-1" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.002 2.725a.75.75 0 01.797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 11-1.497.098 10.502 10.502 0 00-9.776-9.776.75.75 0 01-.7-.798zM2 13a1 1 0 112 0 1 1 0 01-2 0zm.84-5.95a.75.75 0 00-.179 1.489c2.509.3 4.5 2.291 4.8 4.8a.75.75 0 101.49-.178A7.003 7.003 0 002.838 7.05z"></path></svg>
+                        Subscribe to your news feed
+                    </a>
+                </div>
+            </div>
+                <footer class="middle-footer">
+                    <div class="footer-left">
+                        <a href="#" class="footer-left-a">
+                            <svg height="24" class="octicon octicon-mark-github d-block mr-2 float-left" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                            <span class="footer-left-span">
+                                © 2020 GitHub, Inc.
+                              </span>
+                        </a>
+                    </div>
+                    <div class="footer-right">
+                        <ul class="footer-right-ul">
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Blog</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">About</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Shop</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Contact GitHub</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Pricing</a> </li>
+                        </ul>
+                        
+                        <ul class="footer-right-ul">                 
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">API</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Training</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Status</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Security</a> </li>
+                            <li class="footer-right-li">
+                            </li>
+                        </ul>
+                        
+                        <ul class="footer-right-ul">                            
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Terms</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Privacy</a> </li>
+                            <li class="footer-right-li">
+                                <a href="" class="footer-right-a">Help</a> </li>
+                            <li class="footer-right-li">
+                            </li>
+                            <li class="footer-right-li">                                 
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </footer>
+            </div>
+            </div>
+        </div>
+        <!-- 左边内容：主要呈现个人的仓库 固定 -->
+        
+            <!-- 上边的个人仓库 -->
+        <div class="container-left">
+            <div class="container-left-top">
+                <!-- repositories -->
+                <h2 class="repositories">
+                    Repositories
+                 <button class="repositories-btn" >
+                    <a href="#" class="repositories-a">
+                        <svg class="octicon octicon-repo" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+                        New
+                    </a>
+                </button>
+                </h2>
+                <input class="container-left-top-input" placeholder="Find a repository...">
+                <ul class="repo-ul">
+                    <li class="repo-li">
+                        <a href="#" class="repo-li-a">
+                            <svg aria-label="Repository" class="octicon octicon-repo flex-shrink-0" viewBox="0 0 16 16" version="1.1" width="16" height="16" role="img"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+                            shixtaa/banyuan-class
+                        </a>
+                    </li>
+                    <li class="repo-li">
+                        <a href="#" class="repo-li-a">
+                            <svg aria-label="Repository" class="octicon octicon-repo flex-shrink-0" viewBox="0 0 16 16" version="1.1" width="16" height="16" role="img"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+                            shixtaa/test1
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Working with a team? -->
+            <div class="container-left-bottom">
+                <h2 class="team-h2">
+                    Working with a team?
+                </h2>
+                <p class="team-p">
+                    GitHub is built for collaboration. Set up an organization to improve the way your team works together, and get access to more features.
+                </p>
+                
+                    <a href="#" class="team-btn-a">
+                        <button class="team-btn">
+                            Create an organization
+                        </button>
+                        
+                    </a>
+                <!-- </button> -->
+                
+            </div> 
+        </div>
+        
+        
+         <!-- 右侧仓库推荐 -->
+        <div class="container-right">
+            <div class="container-right-box">
+                <h2 class="container-right-box-h2">Explore repositories</h2> 
+                <!-- 右侧的每一个小盒子 -->
+                <div class="right-box-top">
+                    <a class="right-box-top-a">championswimmer/vuex-persist</a>
+                    <p class="right-box-top-p" >
+                      A Vuex plugin to persist the store. (Fully Typescript enabled)
+                    </p>                  
+                    <span class="circle" style="display:inline-block; width: 12px;height: 12px;border-radius: 6px; background-color: #2b7489"></span>
+                    <span class="circle-right">TypeScript</span>     
+                    <span class="f6 text-gray text-normal">
+                      <svg aria-label="star" class="octicon octicon-star" viewBox="0 0 16 16" style="fill:#586068" version="1.1" width="16" height="16" role="img"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path></svg>
+                      1.2k
+                    </span>
+                </div>
+                <div class="right-box-top">
+                    <a class="right-box-top-a">HaoChuan9421/vue-ueditor-wrap</a>
+                    <p class="right-box-top-p" >
+                        🚴Vue + 🚄UEditor + v-model双向绑定🚀https://haochuan9421.github.io/vue-ueditor-wrap-demo/
+                    </p>                  
+                    <span class="circle" style="display:inline-block; width: 12px;height: 12px;border-radius: 6px; background-color: #2b7489"></span>
+                    <span class="circle-right">JavaScript </span>     
+                    <span class="f6 text-gray text-normal">
+                      <svg aria-label="star" class="octicon octicon-star" viewBox="0 0 16 16" style="fill:#586068" version="1.1" width="16" height="16" role="img"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path></svg>
+                      1.1k
+                    </span>
+                </div>
+                <a href="#" class="explore-more">Explore more →</a>
+            </div>
+        </div>
+
+    
+
+</body>
+</html>
