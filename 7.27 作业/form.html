@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        .box {
+            width: 1050px;
+            height: 600px;
+            background-color: #f7f7f7;
+            margin: 0 auto;
+            font-size: 20px;
+            color: #878787;
+            position: relative;
+        }
+        
+        h1 {
+            display: inline-block;
+            line-height: 100px;
+            border-bottom: 1px solid black;
+            width: 950px;
+            padding: 0 0 0 100px;
+        }
+        
+        input {
+            height: 50px;
+            width: 717px;
+            border-radius: 5px;
+            border-color: #878787;
+            font-size: 20px;
+        }
+        
+        .name {
+            width: 850px;
+            padding-top: 50px;
+            /* padding-right: 10px; */
+            margin: 0 auto;
+        }
+        
+        .password {
+            padding: 50px 0 0 65px;
+            margin: 0 auto;
+        }
+        
+        button {
+            position: absolute;
+            width: 161px;
+            height: 69px;
+            background-color: #d47b77;
+            font-size: 20px;
+            border-radius: 5px;
+            border-color: #d47b77;
+            left: 216px;
+            bottom: 50px;
+            color: white;
+        }
+        
+        p {
+            margin-left: 116px;
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="box" onsubmit="return false">
+        <h1>表单</h1>
+        <div class="name">
+            Your Name: <input class="inName" type="text" placeholder="Your Full Name">
+            <p class="errorName" flag="0">姓名格式错误，长度不小于4位，不大于16位</p>
+        </div>
+        <div class="password">
+            Your password: <input class="inPwd" type="password">
+            <p class="errorPwd" flag='0' onchange="change(this.flag)">密码格式错误，password长度不小于8位，不大于15位</p>
+        </div>
+        <button type="submit">send</button>
+
+    </form>
+
+</body>
+<script>
+    var patternName = /^([0-9a-zA-Z]|-|_){4,16}$/;
+    var patternPwd = /^([0-9a-zA-Z]|_){8,15}$/;
+    var inputName = document.querySelector('.inName')
+    var pName = document.querySelector('.errorName')
+    console.log(pName)
+    inputName.oninput = function() {
+        if (patternName.test(inputName.value) == true) {
+            pName.style.display = 'none';
+        } else {
+            pName.style.display = 'block';
+        }
+    }
+
+    var inputPwd = document.querySelector('.inPwd')
+    var pPwd = document.querySelector('.errorPwd')
+    inputPwd.oninput = function() {
+        if (patternPwd.test(inputPwd.value) == true) {
+            pPwd.style.display = 'none';
+            pPwd.flag = '1';
+        } else {
+            pPwd.style.display = 'block';
+        }
+    }
+    var btn = document.querySelector('button')
+    btn.onclick = function() {
+        if (patternPwd.test(inputPwd.value) == true && patternName.test(inputName.value) == false) {
+
+            inputName.value = '';
+        } else if (patternPwd.test(inputPwd.value) == false && patternName.test(inputName.value) == true) {
+
+            inputPwd.value = '';
+        } else if (patternPwd.test(inputPwd.value) == false && patternName.test(inputName.value) == false) {
+
+            inputPwd.value = '';
+            inputName.value = '';
+
+        } else {}
+    }
+</script>
+
+</html>

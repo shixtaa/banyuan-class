@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baidu</title>
+    <link rel="stylesheet" href="baidu.css">
+    <style>
+        .setting-list {
+            display: none;
+            width: 85px;
+            height: 100px;
+            right: 58px;
+            position: absolute;
+            top: 45px;
+        }
+        
+        a.setting-list-li {
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="head">
+        <ul class="head-left">
+            <li><a href="#" class="h-left">新闻</a></li>
+            <li><a href="#" class="h-left">hao123</a></li>
+            <li><a href="#" class="h-left">地图</a></li>
+            <li><a href="#" class="h-left">视频</a></li>
+            <li><a href="#" class="h-left">贴吧</a></li>
+            <li><a href="#" class="h-left">学术</a></li>
+            <li><a href="#" class="h-left">更多</a></li>
+        </ul>
+        <ul class="head-right">
+            <li><a href="#" class="h-right fight">高考加油</a></li>
+            <li class="setting">
+                <a href="#" class="h-right setting-a">设置</a>
+                <div class="setting-list">
+
+                    <a class="setting-list-li" href="#">搜索设置</a>
+
+
+                    <a class="setting-list-li" href="#">高级搜索</a>
+
+
+                    <a class="setting-list-li" href="#">关闭预测</a>
+
+                </div>
+            </li>
+            <li>
+                <button class="login">登录</button>
+            </li>
+        </ul>
+    </header>
+    <div class="container">
+        <div class="top">
+            <img class="logo" src="logo.png" alt="logo">
+            <div class="search">
+                <input type="text" name="searchbar" id="search-left">
+                <button class="btn">百度一下</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <ul class="foot-left">
+            <li><a class="f-left" href="#">设为首页</a></li>
+            <li><a class="f-left" href="#">关于百度</a></li>
+            <li><a class="f-left" href="#">About Baidu</a></li>
+            <li><a class="f-left" href="#">百度营销</a></li>
+            <li><a class="f-left" href="#">使用百度前必读</a></li>
+            <li><a class="f-left" href="#">意见反馈</a></li>
+            <li><a class="f-left" href="#">帮助中心</a></li>
+        </ul>
+        <ul class="foot-right">
+            <li><span class="f-right" href="#">©2020 Baidu</span></li>
+            <li><span class="f-right" href="#">(京)-经营性-2017-0020</span></li>
+            <li><a class="f-right" href="#">京公网安备11000002000001号</a></li>
+            <li><span class="f-right" href="#">京ICP证03017号</span></li>
+        </ul>
+    </footer>
+</body>
+<script>
+    var setting = document.querySelector('.setting')
+        // console.log(a)
+    var ul = document.querySelector('.setting-list');
+    console.log(ul)
+    setting.onmouseover = function() {
+        ul.style.display = "block";
+    }
+
+    setting.onmouseout = function() {
+        ul.style.display = "none";
+    }
+</script>
+
+</html>
