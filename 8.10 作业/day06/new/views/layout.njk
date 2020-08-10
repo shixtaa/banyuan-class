@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width'>
+    <title>{{ title }}</title>
+    {# <link rel='stylesheet', href='/css/style.css'> #}
+    
+    {# 相对于public #}
+    {%block style%}{%endblock%}    
+</head>
+<body>
+{% block content %}
+{% endblock %}
+
+
+</body>
+{# 方法一 由子类引入#}
+{%block script%}{%endblock%}
+
+{# 方法二 父类直接引用#}
+{# <script src='./js/index.js'></script> #}
+</html>

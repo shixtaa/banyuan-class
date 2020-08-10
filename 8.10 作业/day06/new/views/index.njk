@@ -1,0 +1,14 @@
+//模版引擎
+
+{% extends 'content.njk' %}
+<div>this is index.njk</div>
+{% block top %}
+{# <h1>{{title | join ('-')}}</h1> #}
+{# <h1>{{title | capitalize}}</h1> #}
+{# 使用capitalize，前面的变量一定要是字符串 #}
+<h1>{{title  | join ('-') | capitalize}}</h1>
+{% include 'child.njk'%}
+<p>Welcome use {{title}}</p>
+<div>{{ content }}</div>
+<div>{{ test }}</div>
+{% endblock %}
