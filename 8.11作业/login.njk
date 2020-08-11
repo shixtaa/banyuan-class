@@ -1,0 +1,79 @@
+{%extends "layout.njk"%}
+{%block content%}
+    <div>用户名：<input type="text" class="username"></div>
+    <div>密码：<input type="password" class="password"></div>
+    <div><button class="login-btn">提交</button></div>
+    <input type="text" class="left">
+    <input type="text" class="right">
+{% endblock %}
+{%include 'child.njk'%}}
+{%block script%}
+
+<script>
+    let btn=document.querySelector('.login-btn');
+    let username=document.querySelector('.username');
+    let pwd=document.querySelector('.password');
+    btn.onclick=()=>{
+            if(username.value&&pwd.value){
+                $.ajax({
+                    type:"post",
+                    url:"http://localhost:3000/login",
+                    data:{
+                        name:username.value,
+                        password:pwd.value
+                    },
+                    success:(result)=>{
+                        console.log(result)
+                        window.location.href='http://localhost:3000/loginTest'
+                    },
+                    error:(error)=>{
+                        console.log(error)
+                    }
+                })
+            }
+        }
+</script>   
+<script>
+    let left=document.querySelector('.left');
+    let right=document.querySelector('.right');
+    init();
+    {# let input=$.cookie('input')?JSON.parse($.cookie('input')):{} #}
+    left.onblur=()=>{
+        $.cookie('left',left.value);
+    }
+    right.onblur=()=>{
+        $.cookie('right',right.value);
+    }
+    function init(){
+        if($.cookie('left')){
+        left.value=$.cookie('left');
+        }
+        if($.cookie('right')){
+        right.value=$.cookie('right');
+        }
+    }
+
+    {# left.onblur=()=>{
+        input.left=left.value;
+        console.log(input)
+        $.cookie('input',JSON.stringify(input))
+    }
+    right.onblur=()=>{
+        input.right=right.value;
+        console.log(input)
+        $.cookie('input',JSON.stringify(input))
+    }
+    function init(){
+    if($.cookie('input')){
+        let data=JSON.parse($.cookie('input'));
+        if( data){
+            left.value=data.left||'';
+            right.value=data.right||'';
+        }
+    }
+    } #}
+
+
+
+</script>
+{%endblock%}
