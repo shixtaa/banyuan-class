@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+    <div class="main">
+
+      <div>
+        用户名：
+        <input type="text" class="username"/>
+      </div>
+
+      <div>
+        密码：
+        <input type="text" class="password"/>
+      </div>
+
+      <div>
+        确认：
+        <input type="text" class="check"/>
+      </div>
+
+      <div>
+        <button type="button" class="login-btn" disabled>注册</button>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="jquery3.5.js"></script>
+
+    <script>
+    var username=document.getElementsByClassName('username')[0];
+    var password=document.getElementsByClassName('password')[0];
+    var checkEle=document.getElementsByClassName('check')[0];
+    var button=document.getElementsByClassName('login-btn')[0];
+
+    var nameResult=false;
+    var pwdResult=false;
+    var checkResult=false;
+    function checkName(){
+      let name=username.value;
+      let patternName=/^[a-zA-Z_-]{4,16}$/;
+      let flag=patternName.test(name);
+      let warning=document.getElementsByClassName('warning username')[0]
+      console.log(flag)
+      if(flag){
+        if(warning){
+            warning.remove();
+          }
+      }
+      else{
+        if(!warning){
+          createWarn('username',username,'用户名必须为4到16位大小写字母')
+        }
+      }
+      nameResult=flag;
+      checkBtn()
+    }
+    function checkPassword(){
+      let pwd=password.value;
+      let patternPwd=/^[0-9a-zA-Z_]{8,15}$/;
+      let key=patternPwd.test(pwd);
+      let warning=document.getElementsByClassName('warning password')[0]
+      if(key){
+        if(warning){
+            warning.remove();
+          }
+      }
+      else{
+        if(!warning){
+          createWarn('password',password,'密码必须为5到18位字母或数字或下划线')
+        }
+      }
+      pwdResult=key;
+      checkBtn()
+    }
+    function checkAgain(){
+      let pwd=password.value;
+      let checkValue=checkEle.value;
+      let result=(pwd==checkValue)?true:false;
+      let warning=document.getElementsByClassName('warning check')[0]
+      console.log(result)
+      if(result){
+        if(warning){
+            warning.remove();
+          }
+      }
+      else{
+        if(!warning){
+          createWarn('check',check,'两次密码不一致')
+        }
+      }
+      checkResult=result;
+      checkBtn()
+    }
+    function createWarn(cname,target,content){
+      let span=document.createElement('span');
+      span.className='warning '+cname;
+      span.innerHTML=content;
+      span.style.color='red';
+      span.style.fontSize='10px'
+      target.after(span)
+    }
+    function checkBtn(){
+      button.disabled=pwdResult&&nameResult&&checkResult?false:true;
+      
+    }
+    username.onblur=checkName;
+    password.onblur=checkPassword;  
+    checkEle.onblur=checkAgain;  
+    button.onclick=function (){
+      console.log(1)
+        $.ajax({
+        type:"post",
+        url:"http://localhost:3000/check",
+        data:{
+          name:username.value,
+          password:password.value,
+          check:checkEle.value
+        },
+        success:()=>{
+          console.log(1)
+        },
+        error:()=>{
+          console.log(2)
+        }
+
+      })
+      }
+      
+    
+    // button.onclick = function() {
+
+// var name = username.value;
+// var password = password.value;
+// var check = check.value;
+// $.ajax({
+//     type: 'post',
+//     url: 'http://localhost:3000/regist',
+//     data: {
+//         name,
+//         password,
+//         check
+//     },
+//     success: (result) => {
+//         status: 'success'
+//         alert('注册成功')
+//     },
+//     error: () => {
+//         console.log(error)
+
+//     }
+// })
+
+// }
+
+
+    </script>
+</body>
+</html>
