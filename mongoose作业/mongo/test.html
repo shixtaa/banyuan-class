@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><input type="text" class="login-name"></div>
+    <div><input type="text" class="login-password"></div>
+    <div><button class="login-btn">登陆</button></div>
+</body>
+<script src="./jquery3.5.js"></script>
+<script>
+    let nameEle=document.querySelector('.login-name');
+    let passwordEle=document.querySelector('.login-password')
+    let btnEle=document.querySelector('.login-btn')
+    btnEle.onclick=function login(){
+        $.ajax({
+            type:"post",
+            url:"http://localhost:3000/login",
+            data:{
+                name:nameEle.value,
+                password:passwordEle.value
+            },
+            success:(result)=>{
+                if(result.status==='success'){
+
+                    alert('登录成功')
+                }else{
+                    alert(result.message)
+                }
+            }
+
+        })
+    }
+</script>
+</html>

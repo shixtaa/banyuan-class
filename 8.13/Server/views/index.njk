@@ -1,0 +1,91 @@
+{% extends 'layout.njk' %}
+{% block content %}
+
+
+<div>
+    姓名:
+    <input type="text" class="username"/>
+</div>
+
+<div>
+    性别:
+    <select class='gender'>
+        <option value="0">女</option>
+        <option value="1">男</option>   
+    </select>
+</div>
+
+<div>
+    年龄:
+    <input type="text" class="age"/>
+</div>
+
+<div>
+    学科:
+    <select class='major'>
+        <option value="web">web</option>
+        <option value="java">java</option>   
+    </select>
+</div>
+
+<div>
+
+    <button class="btn">提交</button>
+</div>
+
+
+<div class='student-list'>
+
+    {% for item in result %}
+<li >{{item.name}}</li>
+        
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+
+
+{% block script%}
+<script src="./js/jquery3.5.js"></script>
+<script>
+    let nameEle=document.getElementsByClassName('username')[0]
+    console.log(nameEle)
+    let genderEle=document.getElementsByClassName('gender')[0]
+    let ageEle=document.getElementsByClassName('age')[0]
+    console.log(ageEle)
+    let majorEle=document.getElementsByClassName('major')[0]
+    let btnEle=document.getElementsByClassName('btn')[0]
+    // 获取selector中option的方式
+
+    const index1 = genderEle.selectedIndex;
+
+    const gender = genderEle.options[index1];
+
+    const value1 = gender.value;
+
+    const index2 = majorEle.selectedIndex;
+
+    const major = majorEle.options[index2];
+
+    const value2 = major.value;
+
+    btnEle.onclick=()=>{
+        $.ajax({
+            type:"post",
+            url:'http://localhost:3000/login',
+            data:{
+                name:nameEle.value,
+                gender:value1,
+                age:ageEle.value,
+                major:value2
+            },
+            success:(result)=>{
+                console.log("success")
+            }
+        })
+    }
+</script>
+{% endblock%}
+
