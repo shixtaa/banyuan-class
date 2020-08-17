@@ -1,5 +1,5 @@
-const user=require('./users')
+const student=require('./student')
 
 module.exports =  (router) => {
-user(router)
+  student(router)
 }

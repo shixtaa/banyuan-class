@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-promise": "^4.2.1",
     "mongoose": "^5.9.28"
   }
 }

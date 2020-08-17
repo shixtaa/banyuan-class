@@ -2,7 +2,7 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const app = new Koa()
 const router = new Router()
-const cors = require('koa2-cors');
+const cors = require('koa2-cors')
 
 const views = require('koa-views')
 const co = require('co')
@@ -19,6 +19,8 @@ const routes = require('./routes')
 
 const port = process.env.PORT || config.port
 
+const {initConnection}=require('./models/connection/index')
+initConnection()
 // error handler
 onerror(app)
 
@@ -45,6 +47,8 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - $ms`)
 })
+
+
 
 router.get('/', async (ctx, next) => {
   // ctx.body = 'Hello World'
