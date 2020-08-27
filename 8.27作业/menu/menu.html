@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./menu.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container-top">
+            <div class="food">
+                <div class="name">叉烧芋粒饺</div>
+                <div class="food-right">
+                    <div class="money">$5.95</div>
+                    <div class="box">
+                        <button class="minus">-</button>
+                        <div class="number">1</div>
+                        <button class="plus">+</button>   
+                    </div>
+                </div>
+                
+            </div>
+            <div class="food">
+                <div class="name">菜肉饺</div>
+                <div class="food-right">
+                    <div class="money">$6.50</div>
+                    <div class="box">
+                        <button class="minus">-</button>
+                        <div class="number">1</div>
+                        <button class="plus">+</button>   
+                    </div>
+                </div>
+            </div>
+            <div class="food">
+                <div class="name">菜饺</div>
+                <div class="food-right">
+                    <div class="money">$6.50</div>
+                    <div class="box">
+                        <button class="minus">-</button>
+                        <div class="number">1</div>
+                        <button class="plus">+</button>   
+                    </div>
+                </div>
+            </div>
+            <div class="food">
+                <div class="name">上海锅贴</div>
+                <div class="food-right">
+                    <div class="money">$6.50</div>
+                    <div class="box">
+                        <button class="minus">-</button>
+                        <div class="number">1</div>
+                        <button class="plus">+</button>   
+                    </div>
+                </div>
+            </div>
+            <div class="food">
+                <div class="name">干味煎饺</div>
+                <div class="food-right">
+                    <div class="money">$6.95</div>
+                    <div class="box">
+                        <button class="minus">-</button>
+                        <div class="number">1</div>
+                        <button class="plus">+</button>   
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <div class="container-bottom">
+            <div class="top-box">
+                <div class="total">总价</div>
+                <div class="total-money">$32.40</div>
+            </div>
+            <button class="confirm-btn">确认下单</button>
+        </div>
+    </div>
+    <div class="mask">
+        <img class='loading' src="./loading.gif" alt="">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="./menu.js"></script>
+    <script>
+        let confirmEle=document.querySelector('.confirm-btn')
+        let maskEle=document.querySelector('.mask')
+        let timer;
+        confirmEle.onclick=_.throttle(()=>{
+            maskEle.style.display='flex' 
+            if(timer){
+                clearTimeout(timer)
+            }
+            timer=setTimeout(() => {
+                maskEle.style.display='none'
+            }, 2000);
+        },2000)
+        
+    </script>
+</body>
+</html>

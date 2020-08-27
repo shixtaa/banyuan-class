@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .search-input{
+            width: 200px;
+            border: 2px solid black;
+            outline: none;
+        }
+        .search-box{
+            width: 200px;
+            border: 2px solid black;
+            border-top: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class='search-input'>
+    <div class="search-box">
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script>
+        let inputEle=document.querySelector('.search-input');
+        let searchEle=document.querySelector('.search-box');
+        inputEle.onkeyup=_.debounce(()=>{
+            let value=inputEle.value;
+            let array=['123','223','456','323'];
+            let data=[];               
+            array.forEach((items)=> {
+                if(_.includes(items,value)){  
+                    data.push(items)   
+                }
+            });
+            let html=''
+            data.forEach(element => {
+                if(value){
+                    searchEle.style.display='block';
+                    html+='<div class="search-result">'+element+'</div>'
+                }else{
+                    searchEle.style.display='none' 
+                }                       
+                });
+            searchEle.innerHTML=html      
+        },500)
+
+    </script>
+</body>
+</html>
