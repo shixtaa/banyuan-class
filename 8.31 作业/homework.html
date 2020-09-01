@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="container">
 
         <div>
-        姓名
-        <input type="text" class="name"/>
+            姓名
+            <input type="text" class="name" />
         </div>
-        
+
         <div>
             性别
             <select class="gender">
@@ -22,80 +24,84 @@
         </div>
         <div>
 
-        年龄
-        <input type="text" class="age"/>
+            年龄
+            <input type="text" class="age" />
         </div>
 
         <div>
-        班级
-        <select class="major">
-            <option value="web">web</option>
-            <option value="java">java</option>
-        </select>
+            班级
+            <select class="major">
+                <option value="web">web</option>
+                <option value="java">java</option>
+            </select>
         </div>
 
     </div>
     <div class="result"></div>
     <script>
-        var nameEle=document.querySelector('.name')
-        var genderEle=document.querySelector('.gender')
-        var ageEle=document.querySelector('.age')
-        var majorEle=document.querySelector('.major')
-        var resultEle=document.querySelector('.result')
-        let value={}
-        function set(key){
-            localStorage.setItem(key,JSON.stringify(value))
+        var nameEle = document.querySelector('.name')
+        var genderEle = document.querySelector('.gender')
+        var ageEle = document.querySelector('.age')
+        var majorEle = document.querySelector('.major')
+        var resultEle = document.querySelector('.result')
+        let value = {}
+        function set(key) {
+            localStorage.setItem(key, JSON.stringify(value))
         }
-        function get(key){
+        function get(key) {
             return JSON.parse(localStorage.getItem(key))
         }
-        nameEle.onblur=()=>{
-            let nameValue=nameEle.value;
-            value.name=nameValue
-            if(nameValue){
-                set('user',value)
+        nameEle.onblur = () => {
+            let nameValue = nameEle.value;
+            value.name = nameValue
+            if (nameValue) {
+                set('user', value)
             }
         }
-        
-        genderEle.onchange=()=>{
-            let index=genderEle.selectedIndex ;
-            let genderValue=genderEle.options[index].text;
-            value.gender={index:index,value:genderValue}
-            set('user',value)
+
+        genderEle.onchange = () => {
+            let index = genderEle.selectedIndex;
+            let genderValue = genderEle.options[index].value;
+            // value.gender = { index: index, value: genderValue }
+            value.gender = genderValue
+            set('user', value)
         }
-        
-        ageEle.onblur=()=>{
-            let ageValue=ageEle.value;
-            value.age=ageValue
-            if(ageValue){
-                set('user',value)
+
+        ageEle.onblur = () => {
+            let ageValue = ageEle.value;
+            value.age = ageValue
+            if (ageValue) {
+                set('user', value)
             }
         }
-        majorEle.onchange=()=>{
-            var index=majorEle.selectedIndex ; 
-            let majorValue=majorEle.options[index].text;
-            value.major={index:index,value:majorValue}
-            // value.major=index
-            set('user',value)
+        majorEle.onchange = () => {
+            var index = majorEle.selectedIndex;
+            let majorValue = majorEle.options[index].value;
+            // value.major = { index: index, value: majorValue }
+            value.major = majorValue
+            set('user', value)
         }
 
-        window.onload=()=>{
-            let result=get('user')
-            let html=''
-            if(result.name&&result.gender&&result.age&&result.major){
-                html+='姓名'+result.name +' 性别'+result.gender.value +' '+result.age+'岁 学习'+result.major.value;
-
-
-                nameEle.value=result.name;
-
-                genderEle.selectedIndex=result.gender.index;
-
-                ageEle.value=result.age;
-
-                majorEle.selectedIndex=result.major.index;  
+        window.onload = () => {
+            let result = get('user')
+            // let html = ''
+            // if (result.name && result.gender && result.age && result.major) {
+            //     html += '姓名' + result.name + ' 性别' + result.gender + ' ' + result.age + '岁 学习' + result.major;
+            if (result) {
+                nameEle.value = result.name || '';
+                genderEle.value = result.gender || '';
+                ageEle.value = result.age || '';
+                majorEle.value = result.major || '';
             }
-            resultEle.innerHTML=html;
+                // nameEle.value = result.name;
+                // genderEle.selectedIndex = result.gender.index;
+                // genderEle.value = result.gender.value
+                // ageEle.value = result.age;
+                // majorEle.selectedIndex = result.major.index;
+            // }
+            // resultEle.innerHTML = html;
         }
     </script>
 </body>
+
 </html>

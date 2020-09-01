@@ -1,0 +1,176 @@
+body {
+    font-size: 16px;
+    background: #f8f8f8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    padding: 0 10px;
+}
+
+.top-nav {
+    height: 52px;
+    margin-bottom: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    width: 50px;
+    height: 52px;
+    text-align: center;
+    line-height: 52px;
+}
+
+.nav-right {
+    height: 52px;
+    text-align: center;
+    line-height: 52px;
+    display: flex;
+}
+
+.nav-left-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url('http://m.baidu.com/se/static/wiseatom/personalcenter/assets/img/hanbaobao_04adf60.png') no-repeat;
+    background-size: contain;
+}
+
+.advert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ad-img {
+    height: 23px;
+    margin-right: 30px;
+}
+
+.ad-span {
+    width: 42px;
+    height: 42px;
+    background: url('https://search-operate.cdn.bcebos.com/1ad251313182977fcb4289e02f4c24b9.png') center/ cover;
+    position: absolute;
+    /* top: -9px; */
+    right: 42px;
+}
+
+.nav-right-icon {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 16px;
+    height: 16px;
+    background-image: url('https://m.baidu.com/bdlogo/squareicon_e582f4c48e93901e747536ad982e030d.png');
+    background-size: contain;
+}
+
+.ns-square-point {
+    position: absolute;
+    top: -3px;
+    right: -4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f44545;
+}
+
+.logo-box {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    height: 57px;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.search-input {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    height: 44px;
+    margin: 0;
+    padding: 7px 42px 7px 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 28px;
+    flex-grow: 1;
+    border: none;
+    font-size: 18px;
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #cdcdcd;
+}
+
+ ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #cdcdcd;
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #cdcdcd;
+}
+
+.search-btn {
+    height: 44px;
+    padding: 0 10px;
+    border: 0;
+    border-left: 1px solid #e8e8e8;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 46px;
+    color: #38f;
+    background: #fff;
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-top: 30px;
+    padding-top: 9px;
+}
+
+.news-item {
+    padding: 5.4px 0;
+}
+
+.news-item>h1 {
+    margin-bottom: 1px;
+    font-size: 18px;
+    color: #333;
+    font-weight: normal;
+}
+
+.tips {
+    color: #999;
+    font-size: 13px;
+}
+
+.set-top {
+    margin-right: 8px;
+    padding: 0;
+    border: none !important;
+    font-size: 13px;
+    color: #ec4345;
+}
