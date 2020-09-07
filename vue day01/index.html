@@ -43,36 +43,40 @@
 
 <body>
     <div id="app">
-        <div class="head">
-            <span></span>
-            <span>姓名</span>
-            <span>数学</span>
-            <span>语文</span>
-            <span>英语</span>
-            <span>地理</span>
-            <span>历史</span>
-            <span>总分</span>
-        </div>
-        <div :class="['container',index==1?'bgGrey':'',index==3?'bgGrey':'']" v-for="(item,index) in list">
-            <span>
-                <img v-if="index==0" src='./img/第一名.jpg'alt="" class="">
-                <img v-if="index==1" src='./img/第二名.jpeg'alt="" class="">
-                <img v-if="index==2" src='./img/第三名.jpeg'alt="" class="">
-            </span>
-            <span>{{item.name}}</span>
-            <template v-for='ele in list[index].score'>
-                <span>{{ele.math}}</span>
-                <span>{{ele.chinese}}</span>
-                <span>{{ele.english}}</span>
-                <span>{{ele.geography}}</span>
-                <span>{{ele.history}}</span>
-            </template>
-            <span>{{item.allCount}}</span>
-        </div>
+
     </div>
     <script>
-        let vm = new Vue({
-            el: '#app',
+        var app = {
+            template: `
+            <div>
+                <div class="head">
+                    <span></span>
+                    <span>姓名</span>
+                    <span>数学</span>
+                    <span>语文</span>
+                    <span>英语</span>
+                    <span>地理</span>
+                    <span>历史</span>
+                    <span>总分</span>
+                </div>
+                <div :class="['container',index==1?'bgGrey':'',index==3?'bgGrey':'']" v-for="(item,index) in list">
+                    <span>
+                        <img v-if="index==0" src='./img/第一名.jpg'alt="" class="">
+                        <img v-if="index==1" src='./img/第二名.jpeg'alt="" class="">
+                        <img v-if="index==2" src='./img/第三名.jpeg'alt="" class="">
+                    </span>
+                    <span>{{item.name}}</span>
+                    <template v-for='ele in list[index].score'>
+                        <span>{{ele.math}}</span>
+                        <span>{{ele.chinese}}</span>
+                        <span>{{ele.english}}</span>
+                        <span>{{ele.geography}}</span>
+                        <span>{{ele.history}}</span>
+                    </template>
+                    <span>{{item.allCount}}</span>
+                </div>
+            </div>
+            `,
             data() {
                 return {
                     list: [{
@@ -118,7 +122,10 @@
                     }]
                 }
             }
-        })
+        }
+        let vm = new Vue({
+            render: h => h(app)
+        }).$mount('#app')
     </script>
 </body>
 
