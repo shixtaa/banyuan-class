@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        li {
+            list-style: none;
+        }
+        
+        img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 12.5%;
+        }
+        
+        .head {
+            background-color: #f6f6f6;
+        }
+        
+        .head,
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .bgGrey {
+            background-color: #f6f6f6;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="head">
+            <span></span>
+            <span>姓名</span>
+            <span>数学</span>
+            <span>语文</span>
+            <span>英语</span>
+            <span>地理</span>
+            <span>历史</span>
+            <span>总分</span>
+        </div>
+        <div :class="['container',index==1?'bgGrey':'',index==3?'bgGrey':'']" v-for="(item,index) in list">
+            <span>
+                <img v-if="index==0" src='./img/第一名.jpg'alt="" class="">
+                <img v-if="index==1" src='./img/第二名.jpeg'alt="" class="">
+                <img v-if="index==2" src='./img/第三名.jpeg'alt="" class="">
+            </span>
+            <span>{{item.name}}</span>
+            <template v-for='ele in list[index].score'>
+                <span>{{ele.math}}</span>
+                <span>{{ele.chinese}}</span>
+                <span>{{ele.english}}</span>
+                <span>{{ele.geography}}</span>
+                <span>{{ele.history}}</span>
+            </template>
+            <span>{{item.allCount}}</span>
+        </div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    list: [{
+                        name: '肖锋',
+                        score: [{
+                            math: 99,
+                            chinese: 100,
+                            english: 100,
+                            geography: 99,
+                            history: 98
+                        }],
+                        allCount: 496
+                    }, {
+                        name: '安澜',
+                        score: [{
+                            math: 90,
+                            chinese: 98,
+                            english: 89,
+                            geography: 96,
+                            history: 100
+                        }],
+                        allCount: 473
+                    }, {
+                        name: '路小北',
+                        score: [{
+                            math: 88,
+                            chinese: 87,
+                            english: 77,
+                            geography: 86,
+                            history: 78
+                        }],
+                        allCount: 416
+                    }, {
+                        name: '许巍',
+                        score: [{
+                            math: 39,
+                            chinese: 40,
+                            english: 76,
+                            geography: 90,
+                            history: 59
+                        }],
+                        allCount: 304
+                    }]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
