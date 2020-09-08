@@ -99,9 +99,9 @@
                 <div class="content-right">
                     <span>¥ ：{{item.price}}</span>
                     <div class="control">
-                        <button class="left-btn" v-on:click="minus(index)">-</button>
+                        <button class="left-btn" v-on:click="minus(item)">-</button>
                         <span class="center">{{item.count}}</span>
-                        <button class="right-btn" v-on:click="add(index)">+</button>
+                        <button class="right-btn" v-on:click="add(item)">+</button>
                     </div>
                 </div>
             </div>
@@ -140,20 +140,20 @@
                 }
             },
             methods: {
-                add(index) {
-                    let newCount = this.list[index].count
+                add(item) {
+                    let newCount = item.count
                     if (newCount < 4) {
-                        this.list[index].count++
-                            this.totalMoney += this.list[index].price
+                        item.count++
+                            this.totalMoney += item.price
                     } else {
                         alert(this.warning[1])
                     }
                 },
-                minus(index) {
-                    let newCount = this.list[index].count
+                minus(item) {
+                    let newCount = item.count
                     if (newCount > 1) {
-                        this.list[index].count--
-                            this.totalMoney -= this.list[index].price
+                        item.count--
+                            this.totalMoney -= item.price
                     } else {
                         alert(this.warning[0])
                     }
