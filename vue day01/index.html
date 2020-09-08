@@ -23,10 +23,9 @@
             height: 50px;
             width: 12.5%;
         }
-        
-        .head {
+        /* .head {
             background-color: #f6f6f6;
-        }
+        } */
         
         .head,
         .container {
@@ -49,17 +48,14 @@
         var app = {
             template: `
             <div>
-                <div class="head">
+                <div class="head bgGrey">
                     <span></span>
-                    <span>姓名</span>
-                    <span>数学</span>
-                    <span>语文</span>
-                    <span>英语</span>
-                    <span>地理</span>
-                    <span>历史</span>
-                    <span>总分</span>
+                    <template v-for='titleItem in titleList'>
+                        <span>{{titleItem}}</span>
+                    </template>
                 </div>
-                <div :class="['container',index==1?'bgGrey':'',index==3?'bgGrey':'']" v-for="(item,index) in list">
+                <!-- <div :class="['container',index==1?'bgGrey':'',index==3?'bgGrey':'']" v-for="(item,index) in list">  -->
+                <div :class="['container',index%2==1?'bgGrey':'']" v-for="(item,index) in list">
                     <span>
                         <img v-if="index==0" src='./img/第一名.jpg'alt="" class="">
                         <img v-if="index==1" src='./img/第二名.jpeg'alt="" class="">
@@ -79,6 +75,7 @@
             `,
             data() {
                 return {
+                    titleList: ['姓名', '数学', '语文', '英语', '地理', '历史', '总分'],
                     list: [{
                         name: '肖锋',
                         score: [{
