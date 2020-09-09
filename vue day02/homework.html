@@ -99,14 +99,14 @@
                 <div class="content-right">
                     <span>¥ ：{{item.price}}</span>
                     <div class="control">
-                        <button class="left-btn" v-on:click="minus(item)">-</button>
+                        <button class="left-btn" v-on:click="minus(index)">-</button>
                         <span class="center">{{item.count}}</span>
                         <button class="right-btn" v-on:click="add(item)">+</button>
                     </div>
                 </div>
             </div>
             <div class="total">
-                <span class="totalprice">总价格: {{totalMoney}}</span>
+                <span class="totalprice">总价格: {{allPrice}}</span>
             </div>
         </div>
     </div>
@@ -115,7 +115,7 @@
             el: '#app',
             data() {
                 return {
-                    totalMoney: 170,
+                    totalMoney: 120,
                     warning: [
                         '不能再少啦！！',
                         '库存数量不足！！'
@@ -139,21 +139,30 @@
                     }, ]
                 }
             },
+            computed: {
+                allPrice() {
+                    let money = 0;
+                    this.list.forEach((item) => {
+                        money += item.price * item.count
+                    })
+                    return money
+                }
+            },
             methods: {
                 add(item) {
                     let newCount = item.count
                     if (newCount < 4) {
                         item.count++
-                            this.totalMoney += item.price
+                            // this.totalMoney += item.price
                     } else {
                         alert(this.warning[1])
                     }
                 },
-                minus(item) {
-                    let newCount = item.count
+                minus(index) {
+                    let newCount = this.list[index].count
                     if (newCount > 1) {
-                        item.count--
-                            this.totalMoney -= item.price
+                        this.list[index].count--
+                            // this.totalMoney -= item.price
                     } else {
                         alert(this.warning[0])
                     }
