@@ -126,9 +126,9 @@
                 <div class="pro-right">
                     <p class="pro-price">￥：{{ item.price }}</p>
                     <div class="btn-box">
-                        <button class="btn1" @click="remove(index)">-</button>
+                        <button class="btn1" @click="remove()">-</button>
                         <input type="text" v-model="item.count" class="pro-num" />
-                        <button class="btn2" @click="add(item)">+</button>
+                        <button class="btn2" @click="add()">+</button>
                     </div>
                     <slot name='discountImg'></slot>    
                 </div>
@@ -143,12 +143,12 @@
                 }
             },
             methods: {
-                remove(index) {
+                remove() {
                     this.$emit('minus', {
                         ind: this.index
                     })
                 },
-                add(item) {
+                add() {
                     this.$emit('plus', {
                         itemC: this.item
                     })
