@@ -15,15 +15,17 @@
 import Header from "./header";
 import Info from "./info";
 import Footer from "./footer";
+
 export default {
   name: "home",
   data() {
+    let ttt = new Date().getTime();
     return {
       list: [
         {
           url: "WEB_css.jpeg",
           title: "CSS入门",
-          time: new Date().getTime(),
+          time: ttt,
           information:
             "CSS是一种能为网页增添样式的语言。它能够修改网页中的字体样式、颜色、背景，增加华丽的动画与3D 效果，是给网页增添设计感的工具。"
         },

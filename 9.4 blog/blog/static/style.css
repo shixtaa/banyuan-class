@@ -32,6 +32,14 @@ input {
     transition: none !important;
 }
 
+.isShow {
+    display: flex !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
 
 /* 导航栏 */
 
@@ -41,7 +49,9 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 1s all;
+    transition: 1s height;
+    position: fixed;
+    /* top: 0; */
 }
 
 .scroll {
@@ -96,7 +106,7 @@ input {
 
 .header-content {
     width: 100vw;
-    height: 570px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -248,7 +258,7 @@ input {
 .message-right {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    /* width: 100%; */
     justify-content: center;
     align-items: center;
 }
@@ -296,7 +306,7 @@ input {
 /* 通用 */
 
 .yellow {
-    color: rgb(174, 141, 27)
+    color: rgb(174, 141, 27) !important
 }
 
 .font-small {

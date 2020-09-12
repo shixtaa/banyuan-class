@@ -2,7 +2,7 @@
   <div class="foot-container">
     <div class="content">
       <img
-        src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/commonbg/logo-footer.png"
+        v-icon-Src="'logo-footer.png'"
         alt=""
         style="width: 146px;margin:10px 0 47px;"
       />
@@ -21,33 +21,33 @@
     <div class="content">
       <p style="margin-bottom:45px">和我们交流</p>
       <div class="contact">
-        <img v-ossSrc="'phone.svg'" alt="" />
+        <img v-icon-Src="'phone.svg'" alt="" />
         <h5 style="margin:0">025-58703536</h5>
       </div>
       <div class="contact">
-        <img v-ossSrc="'map.svg'" alt="" />
+        <img v-icon-Src="'map.svg'" alt="" />
         <h5 style="margin:0">南京市仙林紫东国际创意园B9栋</h5>
       </div>
       <div style="padding-top: 24px;">
-        <img class="icon" v-ossSrc="'weixin.png'" alt="" />
-        <img class="icon" v-ossSrc="'weibo.png'" style="margin-left:16px" />
+        <img class="icon" v-icon-Src="'weixin.png'" alt="" />
+        <img class="icon" v-icon-Src="'weibo.png'" style="margin-left:16px" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Config from "../utils/config";
+// import Config from "../utils/config";
 export default {
-  name: "foot",
-  directives: {
-    ossSrc(el, binding) {
-      let imgPath = binding.value;
-      if (imgPath) {
-        el.setAttribute("src", Config.iconPath + imgPath);
-      }
-    }
-  }
+  name: "foot"
+  // directives: {
+  //   ossSrc(el, binding) {
+  //     let imgPath = binding.value;
+  //     if (imgPath) {
+  //       el.setAttribute("src", Config.iconPath + imgPath);
+  //     }
+  //   }
+  // }
 };
 </script>
 <style>

@@ -1,12 +1,6 @@
 <template>
   <div class="head-container">
-    <!-- <img :src="pic" alt="" class="logo" /> -->
-    <img
-      src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/commonbg/logo.png"
-      alt=""
-      class="logo"
-    />
-
+    <img v-icon-Src="'logo.png'" alt="" class="logo" />
     <ul class="ul">
       <li>首页</li>
       <li>职前培训</li>

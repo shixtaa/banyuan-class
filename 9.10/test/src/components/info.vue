@@ -29,6 +29,7 @@ export default {
 }
 .img-box {
   border: 1px solid #eee;
+  box-shadow: 0 4px 6px #eee;
 }
 .info-img {
   width: 500px;
