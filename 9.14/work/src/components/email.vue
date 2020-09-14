@@ -9,9 +9,7 @@
         <img src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/user/mall/pic_fankui_youxiang.png" alt="">
         <a href="" class="submit">意见反馈</a>
       </div>
-    </div>
-    
-    
+    </div>  
   </div> 
 </template>
 <script>
