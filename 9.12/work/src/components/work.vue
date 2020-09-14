@@ -6,14 +6,14 @@
         <input type="text" v-model="name" class="input1" placeholder="姓名">
         <input type="text" v-model="phone" class="input2" placeholder="手机号">
         <span class="sex-box">
-          <span class="span1 check" @click="getMan" ></span>
-          <span class="span2" @click="getWoman"></span>
+          <span class="span1 " @click="getMan" :style="{border:gender==1?'solid 1px #fff':'none'}"></span>
+          <span class="span2" @click="getWoman" :style="{border:gender==0?'solid 1px #fff':'none'}"></span>
         </span>
       </div>
         <button @click="getInfo" >添加</button>
     </div>
     <div>
-      <div class="all-count">45 位练习人</div>
+      <div class="all-count">{{getCount()}} 位练习人</div>
     </div>
     <List :list="list"></List>
   </div>
@@ -26,9 +26,9 @@ export default {
   name:"Work",
   data() {
     return {
-      info:'',
-      data:{},
-      isShow:true,
+      // info:'',
+      // data:{},
+      // isShow:true,
       list:[
         {
           phoneNumber:"13089890000",
@@ -38,7 +38,8 @@ export default {
         }
       ],
       name:'',
-      phone:''
+      phone:'',
+      gender:1
     }
   },
   components: {
@@ -46,21 +47,43 @@ export default {
   },
   methods:{
     getInfo(){
-      this.data.contacter=this.name;
-      this.data.phoneNumber=this.phone;
-      this.data.time=new Date().getTime()
-      this.info=JSON.stringify(this.data)
-      this.list.push(JSON.parse(this.info))     
+      // this.data.contacter=this.name;
+      // this.data.phoneNumber=this.phone;
+      // this.data.time=new Date().getTime()
+      // this.info=JSON.stringify(this.data)
+      // this.list.push(JSON.parse(this.info))  
+
+      if(!(/^1[3456789]\d{9}$/.test(this.phone))){ 
+        alert("手机号码有误，请重填");  
+        return 
+      }else if(!this.name){
+        alert("姓名不可为空");  
+        return 
+      }else{
+        this.list.push({
+        phoneNumber:this.phone,
+        contacter:this.name,
+        gender:this.gender,
+        time:new Date().getTime()
+        })
+      }  
+      
     },
     getMan(){
-      document.getElementsByClassName('span2')[0].classList.remove("check")
-      this.data.gender=1;
-      document.getElementsByClassName('span1')[0].classList.add("check")
+      // document.getElementsByClassName('span2')[0].classList.remove("check")
+      // this.data.gender=1;
+      this.gender=1
+      // document.getElementsByClassName('span1')[0].classList.add("check")
     },
     getWoman(){
-      document.getElementsByClassName('span1')[0].classList.remove("check")
-      this.data.gender=0;
-      document.getElementsByClassName('span2')[0].classList.add("check")
+      // document.getElementsByClassName('span1')[0].classList.remove("check")
+      // this.data.gender=0;
+      this.gender=0
+      // document.getElementsByClassName('span2')[0].classList.add("check")
+    },
+    getCount(){
+      return this.list.length
+
     }
   },
 }
