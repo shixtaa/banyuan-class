@@ -1,7 +1,7 @@
 <template>
   <div class="nav"> 
-    <div class="back">
-      <img @click="goback" src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/user/ic_fanhui_jiashi.svg" alt="">
+    <div class="back" @click="goback">
+      <img  src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/user/ic_fanhui_jiashi.svg" alt="">
       <span class="returnHome">返回首页</span>
     </div>
     <span class="title">{{title}}</span>
@@ -18,7 +18,8 @@ export default {
   methods:{
     goback(){
       this.$router.push({
-        path:'/home'
+        // path:'/'
+        name:'index'
       })
     }
   }

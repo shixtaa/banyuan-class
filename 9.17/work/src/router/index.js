@@ -1,10 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import About from "../views/About.vue"
+import Index from "../views/index.vue"
 
 Vue.use(VueRouter)
 
 const routes = [{
+        path: '/',
+        name: 'index',
+        component: Index
+    },
+
+    {
         path: '/home',
         name: 'Home',
         redirect: '/home/course',
@@ -25,8 +31,22 @@ const routes = [{
             {
                 path: 'setting',
                 name: 'setting',
+                redirect: '/home/setting/perinfo',
                 component: () =>
-                    import ("../components/setting.vue")
+                    import ("../components/setting.vue"),
+                children: [{
+                        name: 'perinfo',
+                        path: 'perinfo',
+                        component: () =>
+                            import ("../components/perinfo.vue")
+                    },
+                    {
+                        name: 'countinfo',
+                        path: 'countinfo',
+                        component: () =>
+                            import ("../components/countinfo.vue")
+                    }
+                ]
             }
         ]
     },

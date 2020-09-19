@@ -5,35 +5,35 @@
     <h2>非会员</h2>
     <ul class="user-menu-ul" style="height:55%">
       <li class="">
-          <router-link to="/home/course" >
+          <!-- <router-link to="/home/course" > -->
           <!-- @click="getRoute('course')" -->
-          <div class="user-menu-li"  @click="change('我的课程')" :style="{backgroundColor:$route.name==='course'?'rgba(105,100,209,.35)':''}"> 
+          <div class="user-menu-li"  @click="change('course', '我的课程')" :style="{backgroundColor:routeName==='course'?'rgba(105,100,209,.35)':''}"> 
             <img class='icon' alt="" src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/user/uc-index-my-course.png">
             <span >我的课程</span>
           </div>
-          </router-link>
+          <!-- </router-link> -->
       </li>
       <li class="">
-        <router-link to="/home/email" >
+        <!-- <router-link to="/home/email" > -->
         <!-- @click="getRoute('email')"  -->
-          <div class="user-menu-li"  @click="change('邮箱')"  :style="{backgroundColor:$route.name==='email'?'rgba(105,100,209,.35)':''}">
+          <div class="user-menu-li"  @click="change('email','邮箱')"  :style="{backgroundColor:routeName==='email'?'rgba(105,100,209,.35)':''}">
             <img class='icon' alt="" src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/user/uc-index-email.png">
             <span >邮箱</span>
           </div>
-          </router-link>
+          <!-- </router-link> -->
       </li>
     </ul>
     <div class="aside-bom">
       <ul class="user-menu-ul">
         <li class="">
-          <router-link to="/home/setting" >
+          <!-- <router-link to="/home/setting" > -->
           <!--  -->
-          <div class="user-menu-li"  @click="change('设置')" :style="{backgroundColor:$route.name==='setting'?'rgba(105,100,209,.35)':''}">
+          <div class="user-menu-li"  @click="change('setting','设置')" :style="{backgroundColor:routeName==='setting'?'rgba(105,100,209,.35)':''}">
 
             <img class='icon' alt="" src="https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/user/uc-index-set.png">
             <span >设置</span>
           </div>
-            </router-link>
+            <!-- </router-link> -->
         </li>
         <li >
           <div class="user-menu-li" >
@@ -51,7 +51,14 @@ export default {
   name:'asideLeft',
   data(){
     return {
-      // name:'我的课程'
+      name:'course'
+    }
+  },
+  //computed会根据其依赖的变化而变化
+  computed:{
+    routeName(){
+      let name=this.$route.name
+      return name
     }
   },
   methods:{
@@ -62,8 +69,10 @@ export default {
       // })
       // console.log(this.compName)
     // }
-    change(name){
-      console.log(name)
+    change(path,name){
+      this.$router.push({
+        path:'/home/'+path
+      })
       this.$emit('setTitle',{
         title:name
       })
@@ -84,6 +93,7 @@ list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
 }
 .logo{
   width: 146px;

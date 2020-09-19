@@ -1,21 +1,19 @@
 <template>
   <div class="setting">
     <div class="setting-top">
-      <span @click="changeComp('perInfo')">个人信息</span>
-      <span @click="changeComp('countInfo')">账号信息</span>
+      <span @click="changeComp('perinfo')">个人信息</span>
+      <span @click="changeComp('countinfo')">账号信息</span>
     </div>
     <div class="setting-box">
-      <component :is="activeComp"></component>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 <script>
-import perInfo from "./perinfo"
-import countInfo from "./countInfo"
 export default {
   name:'setting',
   components:{
-    perInfo,countInfo
+    // perInfo,countInfo
   },
   data(){
     return {
@@ -24,7 +22,9 @@ export default {
   },
   methods:{
     changeComp(name){
-      this.activeComp=name
+      this.$router.push({
+        path:'/home/setting/'+name
+      })
     }
   }
 }
@@ -48,5 +48,6 @@ export default {
   width: 100%;
   min-height:500px ;
   border: 1px solid black;
+  text-align: center;
 }
 </style>
