@@ -24,7 +24,6 @@ export default {
   },
   methods:{
     check(index){
-      // console.log(this.list)
       this.$emit('check',{
         ind:index
       })

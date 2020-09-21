@@ -9,9 +9,9 @@
         </div>
         <div class="list-box">
           <div class="list-aside">
-              <div @click="jump(false)">未完成任务 ({{getCountN}})</div>
-              <div @click="jump(true)">已完成任务 ({{getCountY}})</div>
-              <div @click="jump()">全部任务 ({{getCount}})</div>
+            <div :style="{backgroundColor:bindStyle==false?'#8186d5':'#c6cbef'}" @click="jump(false)">未完成任务 ({{getCountN}})</div>
+            <div :style="{backgroundColor:bindStyle==true?'#8186d5':'#c6cbef'}" @click="jump(true)">已完成任务 ({{getCountY}})</div>
+            <div :style="{backgroundColor:bindStyle=='all'?'#8186d5':'#c6cbef'}" @click="jump('all')">全部任务 ({{getCount}})</div>   
           </div>
           <div class="list-content">
             <Task :list="newArr" @check='check' @remove='remove'></Task>
@@ -34,9 +34,8 @@ export default {
     return {
       task:'',
       id:0,
+      bindStyle:'',
       checked: false,
-      unfinish:[],
-      finished:[],
       newArr:[],
       list:[
       ]      
@@ -60,34 +59,44 @@ export default {
   },
   methods:{
     getTask(){
-      this.id++,
-      this.list.push({
-        text:this.task,
-        isShow:this.checked,
-        id:this.id
-      })
-      this.newArr=this.list.filter(item => item.isShow===false )
-      this.task=''
+      if(this.task){
+        this.id++,
+        this.list.push({
+          text:this.task,
+          isShow:this.checked,
+          id:this.id,
+          type:"bool"
+        })
+        this.newArr=this.list.filter(item => item.isShow===false )
+        this.task=''
+      }
     },
     check(data){
       this.newArr[data.ind].isShow=!this.newArr[data.ind].isShow
-      if(typeof(this.newArr[data.ind].isShow)==='boolean'){
-        this.newArr.splice(data.ind,1)
+      if(this.newArr[data.ind].type=='bool'){
+        if(typeof(this.newArr[data.ind].isShow)==='boolean'){
+          this.newArr.splice(data.ind,1)
+        }
       }
     },
     remove(data){
       this.newArr.splice(data.index,1)
       let q=this.list.findIndex(obj => obj.id == data.item.id)  
       this.list.splice(q,1)
-
     },
     jump(bool){
+      this.bindStyle=bool
       let data=this.list
       if(typeof(bool)=='boolean'){
         this.newArr=data.filter(item => item.isShow===bool )
+        this.newArr.forEach(element => {
+          element.type="bool"
+        });
       }else{
         this.newArr=data.filter(item => item.isShow!==bool )
-        // this.newArr=data
+        this.newArr.forEach(element => {
+          element.type="all"
+        });
       }
     }
   }
