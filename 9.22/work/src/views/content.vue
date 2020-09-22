@@ -1,14 +1,10 @@
 <template>
   <div class="container">
     <div class="aside">
-      <span>姓名:{{$store.state.login.list.name}}</span>
-      <span>学校:{{$store.state.login.list.school}}</span>
-      <span>性别:{{$store.state.login.list.gender}}</span>
-      <span>年龄:{{$store.state.login.list.age}}</span>
-      <!-- <span>姓名:{{form.name}}</span>
-      <span>学校:{{form.school}}</span>
-      <span>性别:{{form.gender}}</span>
-      <span>年龄:{{form.age}}</span> -->
+      <span>姓名:{{list.name}}</span>
+      <span>学校:{{list.school}}</span>
+      <span>性别:{{list.gender}}</span>
+      <span>年龄:{{list.age}}</span>
     </div>
     <div class="main-content">
       <div class="content-box">
@@ -18,17 +14,17 @@
           <div class="info-item">
             <div class="per-item">
               <span>姓名</span>
-              <input type="text" class="name" v-model="name">
+              <input type="text" class="name" v-model="user.name">
               <span>学校</span>
-              <input type="text" class="school" v-model="school">
+              <input type="text" class="school" v-model="user.school">
             </div>
             <div class="per-item">
               <span>性别</span>
-            <input type="text" class="gender" v-model="gender">
+            <input type="text" class="gender" v-model="user.gender">
             </div>
             <div class="per-item">
               <span>年龄</span>
-              <input type="text" class="age" v-model="age">
+              <input type="text" class="age" v-model="user.age">
             </div>
             <button @click="save">保存</button>
           </div>
@@ -38,29 +34,28 @@
   </div>
 </template>
 <script>
+import { mapState ,mapActions} from 'vuex';
 export default {
   name:'mainContent',
   data(){
     return{
-      name:'',
-      school:'',
-      gender:'',
-      age:'',
-      form:{}
+      user:{}
     }
   },
   created(){
-    this.name=this.$store.state.login.list.name;
-    this.school=this.$store.state.login.list.school;
-    this.age=this.$store.state.login.list.age;
-    this.gender=this.$store.state.login.list.gender;
-    this.form=JSON.parse(JSON.stringify(this.$store.state.login.list))
+    this.user=JSON.parse(JSON.stringify(this.login.list))
+    console.log(this.$store)
+  },
+  computed:{
+    ...mapState({
+      "list":state=>state.list
+    })
   },
   methods:{
+    ...mapActions(['getInfo']),
     save(){
-      let obj={name:this.name,age:this.age,gender:this.gender,school:this.school
-      }
-      this.$store.commit('saveInfo',obj)
+      let obj=JSON.parse(JSON.stringify(this.user))
+      this.getInfo(obj)
       this.$message({
           message: '修改成功',
           type: 'success'

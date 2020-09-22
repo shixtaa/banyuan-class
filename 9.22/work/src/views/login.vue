@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex';
 export default {
   name:"login",
   data(){
@@ -19,13 +20,16 @@ export default {
       ageInput:'',
       genderInput:'',
       schoolInput:'',
-      list:[]
+      // list:[]
     }
   },
-    created() {
-      console.log(this.$store)
-    },
+    // created() {
+    //   console.log(this.$store)
+    // },
   methods:{
+    ...mapActions([
+      'getInfo'
+    ]),
     login(){
       if(!this.nameInput){
         this.$message.error('请输入姓名');
@@ -36,8 +40,13 @@ export default {
       }else if(!this.schoolInput){
         this.$message.error('请输入学校');
       }else{
-        let obj={name:this.nameInput,age:this.ageInput,gender:this.genderInput,school:this.schoolInput}
-        this.$store.commit('getInfo',obj)
+        let obj={
+            name:this.nameInput,
+            age:this.ageInput,
+            gender:this.genderInput,
+            school:this.schoolInput
+          }
+        this.getInfo(obj)
         this.$router.push({
           name:'content'
         })
