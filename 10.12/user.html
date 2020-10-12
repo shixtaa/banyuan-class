@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="example"></div>
+  <script type="text/babel">
+    class App extends React.Component{
+      constructor(){
+        super();
+        this.state={
+          name:'',
+          age:'',
+          major:'',
+          flag:false
+        }
+      }
+      nameBind=(e)=>{
+        this.setState({
+          name:e.target.value
+        })
+      }
+      ageBind=(e)=>{
+        this.setState({
+          age:e.target.value
+        })
+      }
+      majorBind=(e)=>{
+        this.setState({
+          major:e.target.value
+        })
+      }
+
+      check=()=>{
+        var nameReg = /[\u4e00-\u9fa5]/g
+        var ageReg = /[0-9]/g
+        if(this.state.name){
+          if( !nameReg.test(this.state.name)){   
+            this.setState({
+                flag:true
+              })
+            alert("请输入汉字！");  
+          } 
+        }
+        if(this.state.age){
+          if(ageReg.test(this.state.age)){ 
+            if(this.state.age<0 || this.state.age>120)   {
+              this.setState({
+                flag:true
+              }) 
+            alert("大于0小于120岁!");  
+            } 
+          } else{
+            this.setState({
+              flag:true
+            })
+            alert('请输入数字！')
+          }
+        }
+        if(!this.state.major){
+          this.setState({
+              flag:false
+            })
+        }
+        if(this.state.major&&this.state.age&&this.state.name){
+          this.setState({
+            flag:true
+          })
+        }
+        console.log(this.state.flag)
+      }
+      submit=()=>{
+        if( this.state.name){
+          if(this.state.age){
+            if(this.state.major){
+              console.log(this.state.name,this.state.age,this.state.major)
+            }else{
+              alert("请输入主修课程！")
+            }
+          }else{
+            alert('请输入年龄！')
+          }
+        }else{
+          alert("请输入姓名！")
+        }
+      }
+      render(){
+        return (
+          <div>
+            <div>
+              姓   名:<input type="text" value={this.state.name} onChange={this.nameBind} onBlur={this.check}/>
+            </div>
+            <div>
+              年   龄:<input type="text" value={this.state.age} onChange={this.ageBind} onBlur={this.check}/>
+            </div>
+            <div>
+              主修课程:<input type="text" value={this.state.major} onChange={this.majorBind} onBlur={this.check}/>
+            </div>
+            <button onClick={this.submit} disabled={!this.state.flag}>提交</button>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(
+      <App></App>,
+      document.getElementById('example')
+    )
+  </script>
+</body>
+</html>

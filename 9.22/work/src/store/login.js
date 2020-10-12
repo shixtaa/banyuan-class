@@ -1,5 +1,6 @@
 import * as types from "./mutation-type";
 const login = {
+    namespaced: true,
     state: {
         list: JSON.parse(localStorage.getItem('userInfo')) || {}
     },

@@ -43,19 +43,24 @@ export default {
     }
   },
   created(){
-    this.user=JSON.parse(JSON.stringify(this.login.list))
-    console.log(this.$store)
+    this.user=JSON.parse(JSON.stringify(this.list))
   },
   computed:{
     ...mapState({
-      "list":state=>state.list
+      "list":state=>state.login.list
     })
   },
   methods:{
-    ...mapActions(['getInfo']),
+    // ...mapActions(['getInfo']),
+    /* namespaced时 */
+    ...mapActions(['login/getInfo']),//方法一
+    // ...mapActions({
+      // 'getInfo':'login/getInfo'//方法二
+    // }),
     save(){
       let obj=JSON.parse(JSON.stringify(this.user))
-      this.getInfo(obj)
+      // this.getInfo(obj)//方法二
+      this.['login/getInfo'](obj)//方法一
       this.$message({
           message: '修改成功',
           type: 'success'

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物车</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <style>
+    * {
+          padding: 0;
+          margin: 0;
+    }
+      
+    #example{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: 500px;
+        height: 380px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        box-sizing: border-box;
+    }
+    
+    .content {
+        width: 80%;
+        height: 50px;
+        background-color: #F3F3F3;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .content-right {
+        display: flex;
+    }
+    
+    .control {
+        margin-left: 10px;
+        display: flex;
+    }
+    
+    .left-btn,
+    .center,
+    .right-btn {
+        background-color: black;
+        color: white;
+        width: 20px;
+        text-align: center;
+        border: none;
+        outline: none;
+    }
+    
+    .left-btn {
+        padding-left: 5px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    
+    .right-btn {
+        padding-right: 5px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .total {
+            margin-top: 10px;
+            width: 80%;
+            position: relative;
+        }
+        
+    .totalprice {
+        position: absolute;
+        right: 20px;
+        font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="example">
+  </div>
+  <script type="text/babel">
+    class ArrayElements extends React.Component{
+      constructor(){
+        super()
+        this.state={
+          list:[
+                  {id:"93d949f9-e26e-47dc-be39-2158f9b13dec", name: '香蕉', price: 10, count: 1 }, 
+                  {id:"c595a941-158e-43f2-9ae8-5ef60919e0f9", name: '苹果', price: 20, count: 1 },
+                  {id:"8c634728-457b-4e77-83ff-327637793236", name: '榴莲', price: 40, count: 1 },
+                  {id:"08d5001f-92f8-407e-98d4-374a0232fca5", name: '葡萄', price: 50, count: 1 },
+                ],
+          totalPrice:120
+
+        }
+      }
+      addCount=(id)=>{
+        let result=this.state.list.map((item)=>{
+          if(item.id===id){
+            if(item.count<=4){  
+              console.log(item.count)            
+              this.state.totalPrice+=item.price
+              return {...item, count:item.count+1}
+            }else{
+              alert('库存不足')
+              return item
+            }
+          }else{
+            return item
+          }
+        })
+        this.setState({
+          list:result
+        })
+      }
+      removeCount=(id)=>{
+        let result=this.state.list.map((item)=>{
+          if(item.id===id){
+            if(item.count>=1){
+              this.state.totalPrice-=item.price
+              return {...item, count:item.count-1}
+            }else{
+              alert('不能再少啦')
+              return item
+            }
+          }else{
+            return item
+          }
+        })
+        this.setState({
+          list:result
+        })
+      }
+      test=()=>{
+        return this.state.list.reduce((sum,item)=>{
+          return sum+item.count*item.price
+        },0)
+      }
+      render(){
+        return (
+          <div >
+            <div >
+              <Menu menu={this.state.list} addCount={ this.addCount } removeCount={this.removeCount}></Menu>
+              <Cart cart={this.state.list} total={this.state.totalPrice} test={this.test} addCount={ this.addCount } removeCount={this.removeCount}></Cart>
+            </div>  
+          </div>
+        )
+      }
+    }
+    class Menu extends React.Component{
+      constructor(){
+        super()
+      }
+      renderMenu=()=>{
+        const menus=this.props.menu.map((item)=>{
+          return (
+            <div className={'content'} key={item.id}>
+              <span>{item.name}</span>
+              <div className={"content-right"}>
+                  <span>¥ ：{item.price}</span>
+                  <div className={"control"}>
+                      <button className={'left-btn'} onClick={()=>{this.props.removeCount(item.id)}}>-</button>
+                      <span className={'center'}>{item.count}</span>
+                      <button className={'right-btn'} onClick={()=>{this.props.addCount(item.id)}}>+</button>
+                  </div>
+              </div>
+            </div>
+          )
+        })
+        return menus
+      }
+      render(){
+        return (
+            <div className={'container'}>
+              {this.renderMenu()}
+            </div>
+        )
+      }
+    }
+
+    class Cart extends React.Component{
+      constructor(){
+        super()
+      }
+      renderCart=()=>{
+        const cart=this.props.cart.map((item)=>{
+          return (
+            <div className={'content'} key={item.id}>
+              <span>{item.name}</span>
+              <div className={"content-right"}>
+                  <span>¥ ：{item.price}</span>
+                  <div className={"control"}>
+                      <button className={'left-btn'} onClick={()=>{this.props.removeCount(item.id)}}>-</button>
+                      <span className={'center'}>{item.count}</span>
+                      <button className={'right-btn'} onClick={()=>{this.props.addCount(item.id)}}>+</button>
+                  </div>
+              </div>
+            </div>
+          )
+        })
+        return cart
+      }
+      render(){
+        return (
+            <div className="container">
+              {this.renderCart()}
+              <div className="total">
+
+                <span className="totalprice">总价格:{this.props.total}</span>
+                <span className="totalprice">总价格:{this.props.test()}</span>
+
+
+              </div>
+            </div>
+        )
+      }
+    }
+    
+    ReactDOM.render(
+      <ArrayElements></ArrayElements> , 
+      document.getElementById('example') 
+    );
+  </script>
+</body>
+</html>

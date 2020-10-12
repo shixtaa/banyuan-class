@@ -40,6 +40,7 @@ export default {
       }else if(!this.schoolInput){
         this.$message.error('请输入学校');
       }else{
+        console.log(this.$store)
         let obj={
             name:this.nameInput,
             age:this.ageInput,
