@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+  <title>作业2</title>
+  
+</head>
+<body>
+  <div id="example">
+
+  </div>
+
+  <script type="text/babel">
+    class App extends React.Component{
+      constructor(){
+        super()
+        this.state={
+          inputValue:'count1',
+          step:'1',
+          time:'1000',
+          change:true
+        }
+      }
+      render(){
+        return (
+          <div>
+            <h3>控制器：</h3>
+            <div>
+              <select value={this.state.inputValue} onChange={this.change} onChange={(e)=>{this.setState({inputValue:e.target.value},()=>{console.log(this.state.inputValue)})}}>
+                <option value="count1">计时器1</option>
+                <option value="count2">计时器2</option>
+              </select>
+            </div>
+            <div>
+              step: <input type="text" value={this.state.step} onChange={(e)=>{this.setState({step:e.target.value})}}/> <br/>
+              time: <input type="text" value={this.state.time} onChange={(e)=>{this.setState({time:e.target.value})}}/> <br/>
+              <button onClick={()=>{this.setState({change:!this.state.change})}}>修改</button>
+            </div>
+            <div>
+              <Child1 inputValue={this.state.inputValue} change={this.state.change} step={this.state.step} time={this.state.time} />
+              <Child2 inputValue={this.state.inputValue} change={this.state.change} step={this.state.step} time={this.state.time}/>
+            </div>
+          </div>
+        )
+      }
+    }
+    class Child1 extends React.Component{
+      constructor(){
+        super()
+        this.state={
+          count:0,
+          childFlag:true,
+          step:1,
+          time:1000
+        }
+      }
+      componentWillReceiveProps(nextProps){
+        if(nextProps.change!==this.props.change&&nextProps.inputValue=="count1"){
+          this.setState({
+            time:nextProps.time,
+            step:nextProps.step
+          },
+          ()=>{
+            clearInterval(this.counter1)
+            this.timeInterval(nextProps.step,nextProps.time)
+          }
+          )
+        }
+      }
+      click=()=>{
+        this.setState({
+          childFlag:!this.state.childFlag
+        },()=>{this.timeInterval(this.state.step,this.state.time)})
+      }
+      timeInterval=(step,time)=>{
+        if(!this.state.childFlag){
+          this.counter1=setInterval(()=>{
+            this.setState({
+              count:Number(this.state.count)+Number(step)
+            })
+          },time)
+        }else{
+          clearInterval(this.counter1)
+        }
+      }
+      render(){
+        return (
+          <div>
+            <div>计时器1:{this.state.count}</div>
+            <button onClick={this.click}>{this.state.childFlag?"start":"stop"}</button>
+          </div>
+        )
+      }
+    }
+    class Child2 extends React.Component{
+      constructor(){
+        super()
+        this.state={
+          count:0,
+          childFlag:true,
+          time:1000,
+          step:1
+        }
+      }
+      componentDidUpdate(){
+        if(this.state.childFlag){
+          clearInterval(this.counter2)
+        }
+      }
+      componentWillReceiveProps(nextProps){
+        if(nextProps.change!==this.props.change&&nextProps.inputValue=="count2"){
+          this.setState({
+            time:nextProps.time,
+            step:nextProps.step
+          },
+          ()=>{
+            clearInterval(this.counter2)
+            this.timeInterval(nextProps.step,nextProps.time)
+          }
+          )
+        }else{
+          clearInterval(this.counter1)
+        }
+      }
+      click=()=>{
+        this.setState({
+          childFlag:!this.state.childFlag
+        },()=>{
+          console.log(this.state.time)
+          this.timeInterval(this.state.step,this.state.time)
+          })
+      }
+      timeInterval=(step,time)=>{
+        if(!this.state.childFlag){
+          this.counter2=setInterval(()=>{
+            this.setState({
+              count:Number(this.state.count)+Number(step)
+            })
+          },time)
+        }
+      }
+      render(){
+        return (
+          <div>
+            <div>计时器2:{this.state.count}</div>
+            <button onClick={this.click}>{this.state.childFlag?"start":"stop"}</button>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(
+      <App/>,
+      document.getElementById('example')
+    )
+  </script>
+</body>
+</html>

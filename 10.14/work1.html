@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+  <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+  <title>作业1</title>
+  <style>
+    input{
+      width: 150px;
+      padding: 0;
+      border-width: 2px;
+      outline: none;
+    }
+    .result{
+      width: 150px;
+      border: 2px solid black;
+      border-top-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="example">
+
+  </div>
+
+  <script type="text/babel">
+    class App extends React.Component{
+      constructor(){
+        super()
+        this.state={
+          list:['isen','web','banyuan','work','react','vue'],
+          inputValue:'',
+          data:[]
+        }
+      }
+      inputKeyUp=()=>{
+        this.setState({
+          data:[]
+        })
+        this.func()
+      }
+      func=_.debounce(()=>{
+          this.state.list.forEach((item)=>{
+            if(this.state.inputValue){
+              if(_.includes(item,this.state.inputValue)){
+                this.state.data.push(item)
+              }
+            }
+          })
+          this.setState({
+            data:this.state.data
+          })
+      },500)
+
+      renderData(){
+        let newData=this.state.data
+        .sort((a,b)=>{ 
+          if (a.length > b.length) {
+            return 1;
+          } else if (a.length == b.length) {
+            return 0;
+          } else {
+            return -1;
+          }
+        }).map((item)=>{
+          return (
+            <div key={uuidv4()}>{item}</div>
+          )
+        })
+        return newData
+      }
+      render(){
+        return (
+          <div>
+            <div >
+              <input type="text" value={this.state.inputValue} onChange={(e)=>{this.setState({inputValue:e.target.value})}} onKeyUp={this.inputKeyUp}/>
+            </div>
+            {this.state.data.length>0?
+            <div className="result">
+              {this.renderData()}
+            </div>:null}
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(
+      <App/>,
+      document.getElementById('example')
+    )
+  </script>
+</body>
+</html>
